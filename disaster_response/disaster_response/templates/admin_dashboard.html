@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="card bg-danger text-white p-3">
+            <h5>Total Incidents</h5>
+            <h3>{{ incidents }}</h3>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-warning text-white p-3">
+            <h5>Total Victims</h5>
+            <h3>{{ victims }}</h3>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-success text-white p-3">
+            <h5>Total Teams</h5>
+            <h3>{{ teams }}</h3>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

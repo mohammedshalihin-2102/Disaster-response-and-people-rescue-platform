@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Reports</h2>
+
+<div class="card p-3">
+    <p><strong>Active Incidents:</strong> {{ active }}</p>
+    <p><strong>Resolved Incidents:</strong> {{ resolved }}</p>
+</div>
+
+{% endblock %}

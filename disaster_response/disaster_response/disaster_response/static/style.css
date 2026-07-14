@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    position: fixed;
+    background: #1e2a38;
+    padding: 20px;
+    color: white;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background: #34495e;
+}
+
+/* Content area */
+.content {
+    margin-left: 240px; /* leaves space for sidebar */
+    padding: 20px;
+}
+
+/* Card styling */
+.card {
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+/* Form elements */
+.form-select, .form-control {
+    width: 100%; /* keep inputs inside card */
+}

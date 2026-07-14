@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disaster Response System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>DRPR Platform</h2>
+    <a href="/admin_dashboard">Dashboard</a>
+    <a href="/incidents">Incidents</a>
+    <a href="/victims">Victims</a>
+    <a href="/teams" class="nav-link text-white">Rescue Teams</a>
+    <a href="/assignments" class="nav-link text-white">Assignments</a>
+
+    <a href="/reports">Reports</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Incident Management</h2>
+
+<!-- Add Incident Form -->
+<form method="POST" action="/add_incident" class="mb-4">
+    <input type="text" name="disaster_type" class="form-control mb-2" placeholder="Disaster Type" required>
+    <input type="text" name="location" class="form-control mb-2" placeholder="Location" required>
+    <input type="text" name="latitude" class="form-control mb-2" placeholder="Latitude" required>
+    <input type="text" name="longitude" class="form-control mb-2" placeholder="Longitude" required>
+    <input type="number" name="severity" class="form-control mb-2" placeholder="Severity (1-5)" required>
+    <button class="btn btn-danger">Add Incident</button>
+</form>
+
+<hr>
+
+<h4>Incident List</h4>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>Severity</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for i in data %}
+    <tr>
+        <td>{{ i.incident_id }}</td>
+        <td>{{ i.disaster_type }}</td>
+        <td>{{ i.location }}</td>
+        <td>{{ i.severity }}</td>
+        <td>
+            <form method="POST" action="/update_incident/{{ i.incident_id }}">
+                <select name="status" onchange="this.form.submit()">
+                    <option {% if i.status=='Active' %}selected{% endif %}>Active</option>
+                    <option {% if i.status=='Resolved' %}selected{% endif %}>Resolved</option>
+                </select>
+            </form>
+        </td>
+        <td>
+            <a href="/delete_incident/{{ i.incident_id }}" 
+               class="btn btn-sm btn-danger"
+               onclick="return confirm('Delete this incident?')">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<h4>Incident Map</h4>
+<div id="map" style="height:400px;"></div>
+
+<!-- Leaflet Map -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+var map = L.map('map').setView([20.5937, 78.9629], 5);  // India center
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap'
+}).addTo(map);
+
+{% for i in data %}
+    L.marker([{{ i.latitude }}, {{ i.longitude }}])
+        .addTo(map)
+        .bindPopup("<b>{{ i.disaster_type }}</b><br>{{ i.location }}");
+{% endfor %}
+</script>
+
+{% endblock %}

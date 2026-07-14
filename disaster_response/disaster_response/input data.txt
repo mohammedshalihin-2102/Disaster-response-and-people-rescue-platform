@@ -1,0 +1,184 @@
+🔥 Incident 2
+
+Disaster Type: Fire Accident
+
+Location: Coimbatore Gandhipuram
+
+Latitude: 11.0183
+
+Longitude: 76.9725
+
+Severity: 3
+
+🌍 Incident 3
+
+Disaster Type: Earthquake
+
+Location: Delhi NCR
+
+Latitude: 28.7041
+
+Longitude: 77.1025
+
+Severity: 5
+
+🌊 Incident 4
+
+Disaster Type: Cyclone
+
+Location: Visakhapatnam Port
+
+Latitude: 17.6868
+
+Longitude: 83.2185
+
+Severity: 4
+SAMPLE INCIDENT DATA (With Real Coordinates for Map)
+
+Enter these in Add Incident Form
+
+🔥 Incident 1
+
+Disaster Type: Flood
+
+Location: Chennai Marina Beach
+
+Latitude: 13.0500
+
+Longitude: 80.2824
+
+Severity: 4
+
+🔥 Incident 2
+
+Disaster Type: Fire Accident
+
+Location: Coimbatore Gandhipuram
+
+Latitude: 11.0183
+
+Longitude: 76.9725
+
+Severity: 3
+
+🌍 Incident 3
+
+Disaster Type: Earthquake
+
+Location: Delhi NCR
+
+Latitude: 28.7041
+
+Longitude: 77.1025
+
+Severity: 5
+
+🌊 Incident 4
+
+Disaster Type: Cyclone
+
+Location: Visakhapatnam Port
+
+Latitude: 17.6868
+
+Longitude: 83.2185
+
+Severity: 4
+
+When you open the map, markers should appear in India at those locations.
+
+👥 3️⃣ SAMPLE VICTIM DATA
+
+Enter these in Victim Registration
+
+Victim 1
+
+Incident ID: 1
+
+Name: Ravi Kumar
+
+Age: 45
+
+Gender: Male
+
+Medical Condition: Leg Injury
+
+Priority Level: 3
+
+Victim 2
+
+Incident ID: 1
+
+Name: Lakshmi Devi
+
+Age: 70
+
+Gender: Female
+
+Medical Condition: Breathing Problem
+
+Priority Level: 5
+
+Victim 3
+
+Incident ID: 2
+
+Name: Arjun
+
+Age: 10
+
+Gender: Male
+
+Medical Condition: Burn Injury
+
+Priority Level: 4
+
+🚑 4️⃣ SAMPLE RESCUE TEAMS
+
+Enter in Team Module:
+
+Team 1
+
+Team Name: Alpha Rescue
+
+Skills: Flood Rescue, Swimming
+
+Equipment: Boat, Life Jackets
+
+Team 2
+
+Team Name: Fire Response Unit
+
+Skills: Fire Control, Emergency Care
+
+Equipment: Fire Truck, Oxygen Kit
+
+Team 3
+
+Team Name: Medical Support Team
+
+Skills: First Aid, Trauma Care
+
+Equipment: Ambulance, Medical Kit
+
+📋 5️⃣ SAMPLE ASSIGNMENTS
+
+Assign like this:
+
+Assignment 1
+
+Incident ID: 1
+
+Team ID: 1
+
+Assignment 2
+
+Incident ID: 2
+
+Team ID: 2
+
+Assignment 3
+
+Incident ID: 3
+
+Team ID: 3

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Victim Registration</h2>
+
+<form method="POST" class="mb-4">
+    <input type="number" name="incident_id" class="form-control mb-2" placeholder="Incident ID" required>
+    <input type="text" name="name" class="form-control mb-2" placeholder="Name" required>
+    <input type="number" name="age" class="form-control mb-2" placeholder="Age" required>
+    <input type="text" name="gender" class="form-control mb-2" placeholder="Gender" required>
+    <input type="text" name="medical_condition" class="form-control mb-2" placeholder="Medical Condition">
+    <input type="number" name="priority_level" class="form-control mb-2" placeholder="Priority Level (1-5)">
+    <button class="btn btn-warning">Register</button>
+</form>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Priority</th>
+        <th>Status</th>
+    </tr>
+
+    {% for v in victims %}
+    <tr>
+        <td>{{ v.victim_id }}</td>
+        <td>{{ v.name }}</td>
+        <td>{{ v.priority_level }}</td>
+        <td>{{ v.rescue_status }}</td>
+        <td>
+    <a href="/delete_victim/{{ v.victim_id }}" 
+       class="btn btn-sm btn-danger"
+       onclick="return confirm('Delete victim?')">Delete</a>
+</td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <h2 class="text-center mb-5">
+        <i class="bi bi-journal-check"></i> Assignments Dashboard
+    </h2>
+
+    <div class="row g-4">
+        <!-- Add Assignment Form -->
+        <div class="col-md-6">
+            <div class="card shadow-lg h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-plus-circle"></i> Add New Assignment</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('add_assignment') }}">
+                        <div class="mb-3">
+                            <label for="incident_id" class="form-label">Incident</label>
+                            <select name="incident_id" id="incident_id" class="form-select" required>
+                                {% for incident in incidents %}
+                                    <option value="{{ incident['incident_id'] }}">
+                                        {{ incident['location'] }} ({{ incident['disaster_type'] }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="team_id" class="form-label">Rescue Team</label>
+                            <select name="team_id" id="team_id" class="form-select" required>
+                                {% for team in teams %}
+                                    <option value="{{ team['team_id'] }}">{{ team['team_name'] }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Status</label>
+                            <select name="status" id="status" class="form-select" required>
+                                <option value="Pending">Pending</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="bi bi-plus-lg"></i> Add Assignment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Assignments Table -->
+        <div class="col-md-6">
+            <div class="card shadow-lg h-100">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="bi bi-list-check"></i> Current Assignments</h5>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover table-striped align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Incident Location</th>
+                                <th>Rescue Team</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for assignment in assignments %}
+                            <tr>
+                                <td>{{ assignment['id'] }}</td>
+                                <td>{{ assignment['location'] }}</td>
+                                <td>{{ assignment['team_name'] }}</td>
+                                <td>
+                                    <form method="POST" action="{{ url_for('update_assignment', id=assignment['id']) }}">
+                                        <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+                                            <option value="Pending" {% if assignment['status']=='Pending' %}selected{% endif %}>Pending</option>
+                                            <option value="In Progress" {% if assignment['status']=='In Progress' %}selected{% endif %}>In Progress</option>
+                                            <option value="Completed" {% if assignment['status']=='Completed' %}selected{% endif %}>Completed</option>
+                                        </select>
+                                    </form>
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('delete_assignment', id=assignment['id']) }}"
+                                       class="btn btn-danger btn-sm"
+                                       onclick="return confirm('Are you sure you want to delete this assignment?')">
+                                       <i class="bi bi-trash"></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="5" class="text-center">No assignments found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

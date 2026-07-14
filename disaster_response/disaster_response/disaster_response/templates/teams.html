@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Rescue Team Management</h2>
+
+<!-- Add Team Form -->
+<div class="card p-3 mb-4">
+    <h5>Add New Team</h5>
+    <form method="POST">
+        <input type="text" name="team_name" class="form-control mb-2" placeholder="Team Name" required>
+        <input type="text" name="skills" class="form-control mb-2" placeholder="Skills (Medical, Fire, Rescue)" required>
+        <input type="text" name="equipment" class="form-control mb-2" placeholder="Equipment (Ambulance, Boat)" required>
+        <button class="btn btn-success">Add Team</button>
+    </form>
+</div>
+
+<hr>
+
+<h4>Team List</h4>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Availability</th>
+        <th>Skills</th>
+        <th>Equipment</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for t in teams %}
+    <tr>
+        <td>{{ t.team_id }}</td>
+        <td>{{ t.team_name }}</td>
+        <td>
+            <span class="badge {% if t.availability == 'Available' %}bg-success{% else %}bg-danger{% endif %}">
+                {{ t.availability }}
+            </span>
+        </td>
+        <td>{{ t.skills }}</td>
+        <td>{{ t.equipment }}</td>
+        <td>
+            <a href="/edit_team/{{ t.team_id }}" class="btn btn-sm btn-primary">Edit</a>
+            <a href="/delete_team/{{ t.team_id }}" 
+               class="btn btn-sm btn-danger"
+               onclick="return confirm('Delete this team?')">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

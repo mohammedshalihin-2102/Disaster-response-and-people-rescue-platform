@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Edit Rescue Team</h2>
+
+<div class="card p-4">
+    <form method="POST" action="/update_team/{{ team.team_id }}">
+        <label>Team Name</label>
+        <input type="text" name="team_name" value="{{ team.team_name }}" class="form-control mb-3" required>
+
+        <label>Availability</label>
+        <select name="availability" class="form-control mb-3">
+            <option {% if team.availability == 'Available' %}selected{% endif %}>Available</option>
+            <option {% if team.availability == 'Busy' %}selected{% endif %}>Busy</option>
+        </select>
+
+        <label>Skills</label>
+        <input type="text" name="skills" value="{{ team.skills }}" class="form-control mb-3" required>
+
+        <label>Equipment</label>
+        <input type="text" name="equipment" value="{{ team.equipment }}" class="form-control mb-3" required>
+
+        <button class="btn btn-success">Update Team</button>
+        <a href="/teams" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}

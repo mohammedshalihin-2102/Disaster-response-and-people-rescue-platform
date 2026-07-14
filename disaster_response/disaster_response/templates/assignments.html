@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Team Assignments</h2>
+
+<form method="POST" class="mb-4">
+    <input type="number" name="incident_id" class="form-control mb-2" placeholder="Incident ID">
+    <input type="number" name="team_id" class="form-control mb-2" placeholder="Team ID">
+    <button class="btn btn-primary">Assign</button>
+</form>
+
+{% endblock %}
