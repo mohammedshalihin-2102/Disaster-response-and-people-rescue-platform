@@ -1,0 +1,1 @@
+# Disaster-response-and-people-rescue-platform
